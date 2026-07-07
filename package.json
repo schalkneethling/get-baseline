@@ -8,9 +8,10 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "tsc && vp build",
+    "build": "npm run typecheck && vp build",
     "preview": "vp preview",
     "prepare": "vp config",
+    "typecheck": "tsc",
     "lint": "oxlint . && stylelint \"**/*.{css,scss}\"",
     "lint:fix": "oxlint --fix . && stylelint \"**/*.{css,scss}\" --fix",
     "format": "oxfmt --write .",

@@ -106,6 +106,7 @@ const elements = {
   resultsHeading: requiredElement<HTMLParagraphElement>("#results-heading"),
   resultsList: requiredElement<HTMLUListElement>("#results-list"),
   resultsMessage: requiredElement<HTMLParagraphElement>("#results-message"),
+  modeToggle: requiredElement<HTMLElement>(".mode-toggle"),
   snippetCode: requiredElement<HTMLElement>("#snippet-code"),
   sourceSwitch: requiredElement<HTMLButtonElement>("#source-switch"),
 };
@@ -132,6 +133,8 @@ function bindEvents() {
 
   for (const button of document.querySelectorAll<HTMLButtonElement>("[data-mode]")) {
     button.addEventListener("click", () => {
+      if (state.snippetOutputMode !== "full") return;
+
       const mode = button.dataset.mode;
 
       if (mode !== "cdn" && mode !== "bundler") return;
@@ -438,8 +441,13 @@ function renderRedirectTargets(splitTargets: string[]) {
 }
 
 function renderModeButtons() {
+  const isFullSource = state.snippetOutputMode === "full";
+
+  elements.modeToggle.setAttribute("aria-disabled", String(!isFullSource));
+
   for (const button of document.querySelectorAll<HTMLButtonElement>("[data-mode]")) {
-    button.classList.toggle("is-active", button.dataset.mode === state.snippetMode);
+    button.disabled = !isFullSource;
+    button.classList.toggle("is-active", isFullSource && button.dataset.mode === state.snippetMode);
   }
 }
 
