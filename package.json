@@ -1,0 +1,47 @@
+{
+  "name": "get-baseline",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Generate embeddable Baseline status component snippets from Web Platform DX feature IDs.",
+  "homepage": "https://get-baseline.schalkneethling.com",
+  "author": "Schalk Neethling",
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "npm run typecheck && vp build",
+    "preview": "vp preview",
+    "prepare": "vp config",
+    "typecheck": "tsc",
+    "lint": "oxlint . && stylelint \"**/*.{css,scss}\"",
+    "lint:fix": "oxlint --fix . && stylelint \"**/*.{css,scss}\" --fix",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "quality": "npm run lint && npm run format:check"
+  },
+  "dependencies": {
+    "baseline-status": "^1.1.1",
+    "lucide": "^1.23.0",
+    "web-features": "^3.32.0"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.57.0",
+    "oxlint": "^1.72.0",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-plugin-use-baseline": "^1.4.4",
+    "typescript": "~6.0.2",
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "4.1.9"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "11.18.0",
+      "onFail": "download"
+    }
+  }
+}

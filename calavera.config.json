@@ -1,0 +1,36 @@
+{
+  "$schema": "https://calavera.schalkneethling.com/calavera.config.schema.json",
+  "version": 1,
+  "profile": "modern",
+  "packageManager": "npm",
+  "integrations": [
+    "editorconfig",
+    "oxlint",
+    "oxlint-eslint",
+    "oxlint-typescript",
+    "oxlint-unicorn",
+    "oxlint-oxc",
+    "oxfmt",
+    "stylelint",
+    "stylelint-standard",
+    "stylelint-baseline"
+  ],
+  "scripts": {
+    "lint": true,
+    "lint:fix": true,
+    "format": true,
+    "format:check": true,
+    "typecheck": true,
+    "quality": true
+  },
+  "ai": [
+    {
+      "type": "skill",
+      "src": "skills/css-coder"
+    },
+    {
+      "type": "skill",
+      "src": "skills/semantic-html"
+    }
+  ]
+}
