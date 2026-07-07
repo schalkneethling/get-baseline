@@ -8,6 +8,14 @@ describe("snippet generation", () => {
     expect(snippet).toBe('<baseline-status featureId="anchor-positioning"></baseline-status>');
   });
 
+  it("escapes HTML-sensitive characters in feature IDs", () => {
+    const snippet = createSnippet(`a&b"c'd<e>`, "cdn", "component");
+
+    expect(snippet).toBe(
+      '<baseline-status featureId="a&amp;b&quot;c&#39;d&lt;e&gt;"></baseline-status>',
+    );
+  });
+
   it("creates a CDN snippet for direct HTML use", () => {
     const snippet = createSnippet("anchor-positioning", "cdn");
 
