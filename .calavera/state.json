@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "profile": "modern",
+  "integrations": [
+    "editorconfig",
+    "oxlint",
+    "oxlint-eslint",
+    "oxlint-typescript",
+    "oxlint-unicorn",
+    "oxlint-oxc",
+    "oxfmt",
+    "stylelint",
+    "stylelint-standard",
+    "stylelint-baseline"
+  ],
+  "files": [".editorconfig", "oxlint.json", ".stylelintrc.json"],
+  "managedFiles": [
+    {
+      "path": ".editorconfig",
+      "hash": "3a15156"
+    },
+    {
+      "path": "oxlint.json",
+      "hash": "2147541"
+    },
+    {
+      "path": ".stylelintrc.json",
+      "hash": "845e414"
+    }
+  ],
+  "aiArtifacts": [
+    {
+      "type": "skill",
+      "name": "css-coder",
+      "source": "skills/css-coder",
+      "path": ".agents/skills/css-coder",
+      "hash": "913d7a4"
+    },
+    {
+      "type": "skill",
+      "name": "semantic-html",
+      "source": "skills/semantic-html",
+      "path": ".agents/skills/semantic-html",
+      "hash": "236f1dd"
+    }
+  ]
+}

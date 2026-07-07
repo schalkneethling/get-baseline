@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Baseline status component snippet generator" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Baseline status component snippet generator</title>
+    <link rel="canonical" href="https://get-baseline.schalkneethling.com" />
+    <meta
+      name="description"
+      content="Search the Web Platform DX feature catalog, preview the Baseline status component, and copy an embed snippet."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://get-baseline.schalkneethling.com" />
+    <meta property="og:title" content="Baseline status component snippet generator" />
+    <meta
+      property="og:description"
+      content="Search the Web Platform DX feature catalog, preview the Baseline status component, and copy an embed snippet."
+    />
+    <meta
+      property="og:image"
+      content="https://get-baseline.schalkneethling.com/get-baseline-social-share.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Get Baseline social share image" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Baseline status component snippet generator" />
+    <meta
+      name="twitter:description"
+      content="Search the Web Platform DX feature catalog, preview the Baseline status component, and copy an embed snippet."
+    />
+    <meta
+      name="twitter:image"
+      content="https://get-baseline.schalkneethling.com/get-baseline-social-share.png"
+    />
+    <meta name="twitter:image:alt" content="Get Baseline social share image" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1 id="page-title" class="eyebrow">Baseline status component</h1>
+      <p class="lede">
+        Search the Web Platform DX feature catalog, preview the real Baseline component, and paste
+        the generated snippet into your project.
+      </p>
+    </header>
+
+    <main id="app" class="shell" aria-labelledby="page-title">
+      <section class="workspace" aria-label="Snippet generator">
+        <div class="finder">
+          <form class="search-form" role="search">
+            <label for="feature-query">Feature name or ID</label>
+            <div class="search-row">
+              <input
+                id="feature-query"
+                name="feature-query"
+                type="search"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Try container queries, anchor positioning, or Intl.ListFormat"
+              />
+              <button type="submit">Find</button>
+            </div>
+          </form>
+
+          <div class="results" aria-live="polite">
+            <p id="results-message" class="empty-state">
+              Start with a feature name, CSS property, JavaScript API, or known web-features ID.
+            </p>
+            <p id="results-heading" class="results-heading" hidden></p>
+            <ul id="results-list"></ul>
+          </div>
+
+        </div>
+
+        <aside id="output" class="output" aria-label="Selected feature and generated code">
+          <div class="selected-feature">
+            <div class="feature-heading">
+              <h2 id="feature-name"></h2>
+              <div class="feature-id-row">
+                <span class="feature-id-label">Selected ID</span>
+                <code id="feature-id"></code>
+                <button type="button" id="copy-feature-id" class="icon-button">
+                  <span class="visually-hidden">Copy feature ID</span>
+                </button>
+              </div>
+            </div>
+            <p id="feature-description"></p>
+            <div id="redirect-note" class="redirect-note" hidden>
+              <p class="label">This search maps to multiple feature IDs</p>
+              <p>Choose the ID that best matches the status component you want to show.</p>
+              <div id="redirect-targets"></div>
+            </div>
+          </div>
+
+          <div class="preview">
+            <p class="label">Live preview</p>
+            <baseline-status id="feature-preview"></baseline-status>
+          </div>
+
+          <div class="snippet-panel">
+            <div class="snippet-head">
+              <p class="label">Copy snippet</p>
+              <div class="snippet-controls">
+                <div class="source-switcher">
+                  <span class="source-mode-label is-active" data-source-mode="component">
+                    Component
+                  </span>
+                  <button
+                    type="button"
+                    id="source-switch"
+                    class="source-switch"
+                    role="switch"
+                    aria-checked="false"
+                    aria-labelledby="source-switch-label"
+                    aria-describedby="source-switch-description"
+                  >
+                    <span class="source-switch-track" aria-hidden="true">
+                      <span class="source-switch-thumb"></span>
+                    </span>
+                  </button>
+                  <span
+                    id="source-switch-label"
+                    class="source-mode-label"
+                    data-source-mode="full"
+                  >
+                    Full source
+                  </span>
+                  <span id="source-switch-description" class="visually-hidden">
+                    When off, the snippet contains only the Baseline component. When on, it
+                    includes the selected source setup and component.
+                  </span>
+                </div>
+                <div class="mode-toggle" role="group" aria-label="Full source format">
+                  <button type="button" data-mode="cdn">CDN</button>
+                  <button type="button" data-mode="bundler">Bundler</button>
+                </div>
+              </div>
+            </div>
+            <pre tabindex="0"><code id="snippet-code"></code></pre>
+            <button type="button" id="copy-snippet" class="copy-button">Copy snippet</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <aside class="enabled-by" aria-labelledby="enabled-by-heading">
+      <h2 id="enabled-by-heading" class="enabled-by-heading">enabled by</h2>
+      <ul>
+        <li>
+          <a href="https://web.dev/baseline/">Baseline on web.dev</a>
+        </li>
+        <li>
+          <a href="https://github.com/web-platform-dx/baseline-status">
+            Baseline status component
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/web-platform-dx/web-features">
+            Web Platform DX web-features
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <footer class="site-footer">
+      <p>
+        Made with love and digital robots by
+        <a href="https://schalkneethling.com">Schalk Neethling</a>.
+      </p>
+      <p>
+        <a href="https://github.com/schalkneethling/get-baseline/issues">File an issue</a>.
+        <a href="https://github.com/schalkneethling/get-baseline">Contribute on GitHub</a>.
+      </p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
